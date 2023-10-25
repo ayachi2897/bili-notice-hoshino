@@ -558,7 +558,10 @@ async def live_check(): # sync to async
     dylist=[]
 
     url='https://api.live.bilibili.com/room/v1/Room/get_status_info_by_uids'
-    header={'Content-Type': 'application/json'}
+    header={
+                'content-type': 'application/json',
+                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36'
+            }
     data = json.dumps({'uids':up_list})
     async with httpx.AsyncClient() as client:
         res = await client.post(url=url, data=data, headers=header)
